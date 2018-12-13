@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          <form action="" (ngSubmit)="addTecnico(tecnicoForm)" #tecnicoForm="ngForm">
+            <div class="row">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="tecnicoService.selectTecnico._id">
+              <div class="input field col s12">
+                <input type="text" name="fullnameTec" #fullnameTec="ngModel" [(ngModel)]="tecnicoService.selectTecnico.fullnameTec"
+                  placeholder="Escriba su Nombre y Apellidos">
+              </div>
+              <div class="input field col s12">
+                <input type="text" name="emailTec" #emailTec="ngModel" [(ngModel)]="tecnicoService.selectTecnico.emailTec"
+                  placeholder="Escriba su email">
+              </div>
+              <div class="input field col s12">
+                <input type="text" name="passwordTec" #passwordTec="ngModel" [(ngModel)]="tecnicoService.selectTecnico.passwordTec"
+                  placeholder="Escriba su contraseña">
+              </div>
+              <div class="input field col s12">
+                <input type="text" name="photoTec" #photoTec="ngModel" [(ngModel)]="tecnicoService.selectTecnico.photoTec"
+                  placeholder="coloque el nombre de la foto">
+              </div>
+              <div class="input field col s12">
+                <input type="text" name="phoneTec" #phoneTec="ngModel" [(ngModel)]="tecnicoService.selectTecnico.phoneTec"
+                  placeholder="Escriba su numero">
+              </div>
+              <div class="input field col s12">
+                <input type="text" name="dniTec" #dniTec="ngModel" [(ngModel)]="tecnicoService.selectTecnico.dniTec"
+                  placeholder="Escriba su N° DNI">
+              </div>
+              <div class="card-action">
+                <div class="input field col s12">
+                  <!-- <button class="btn right" (click)="resertForm()"> Limpiar </button> -->
+                  <button class="btn right"> Guardar </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+      <table>
+        <thead>
+          <th>Nombre y Apellidos</th>
+          <th>Email</th>
+          <th>Contraseña</th>
+          <th>Foto</th>
+          <th>Telefono</th>
+          <th>N° DNI</th>
+          <th colspan="2">Opereciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tecnico of tecnicoService.tecnico">
+            <td>{{ tecnico.fullnameTec }}</td>
+            <td>{{ tecnico.emailTec }}</td>
+            <td>{{ tecnico.passwordTec }}</td>
+            <td>{{ tecnico.photoTec }}</td>
+            <td>{{ tecnico.phoneTec }}</td>
+            <td>{{ tecnico.dniTec }}</td>
+            <td>
+              <button class="btn col s12 green" (click)="editTecnico(tecnico)"> <i class="material-icons">edit</i></button>
+            </td>
+            <td>
+              <button class="btn col s12 red" (click)="deleteTecnico(tecnico._id)"> <i class="material-icons">delete</i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
